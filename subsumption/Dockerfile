@@ -10,23 +10,23 @@ RUN apt-get update && \
 	apt-get install -y wget && \
     curl -L https://cpanmin.us | perl - App::cpanminus
 
-WORKDIR /PPgSI
+WORKDIR /STVR
 
 # Install defects4j
 RUN git clone https://github.com/rjust/defects4j.git
-WORKDIR /PPgSI/defects4j
+WORKDIR /STVR/defects4j
 RUN cpanm --installdeps . && \
 	./init.sh
-ENV PATH="${PATH}:/PPgSI/defects4j/framework/bin"
+ENV PATH="${PATH}:/STVR/defects4j/framework/bin"
 
-WORKDIR /PPgSI
+WORKDIR /STVR
 
 # Clone subsumption experiment repository
 RUN apt install vim -y
 RUN git clone https://github.com/icst2021satool/subsumption-experiment.git
 
 # Enable script to run
-WORKDIR /PPgSI/subsumption-experiment/scripts
+WORKDIR /STVR/subsumption-experiment/scripts
 
 RUN chmod +x *.sh
 
